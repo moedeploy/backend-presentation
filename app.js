@@ -16,7 +16,7 @@ async function promptUser() {
 
     const options = {
       hostname: '172.30.198.77',
-      port: 8080,
+      port: process.env.port || 8080,
       path: '/',
       method: 'POST',
       headers: {

@@ -1,5 +1,5 @@
+const http = require('http');
 const readline = require('readline');
-const axios = require('axios');
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -13,7 +13,29 @@ async function promptUser() {
     });
 
     console.log(`You entered: ${answer}`);
-    await axios.post('http://localhost:8080', { data: answer });
+
+    const options = {
+      hostname: 'localhost',
+      port: 8080,
+      path: '/',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    };
+
+    const req = http.request(options, res => {
+      console.log(`statusCode: ${res.statusCode}`);
+    });
+
+    req.on('error', error => {
+      console.error(error);
+    });
+
+    const data = JSON.stringify({ data: answer });
+
+    req.write(data);
+    req.end();
   }
 }
 

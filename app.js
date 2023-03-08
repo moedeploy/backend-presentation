@@ -15,7 +15,7 @@ async function promptUser() {
     console.log(`You entered: ${answer}`);
 
     const options = {
-      hostname: 'localhost',
+      hostname: 'http://frontend-node-test-presentationproj.192.168.99.100.nip.io/',
       port: 8080,
       path: '/',
       method: 'POST',

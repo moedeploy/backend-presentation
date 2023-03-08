@@ -1,9 +1,11 @@
 const http = require('http');
-const prompt = require('prompt-sync')();
+const prompt = require('prompt');
+
+prompt.start();
 
 async function promptUser() {
   while (true) {
-    const answer = prompt('Enter something: ');
+    const { answer } = await prompt.get({ name: 'answer', description: 'Enter something:' });
 
     console.log(`You entered: ${answer}`);
 

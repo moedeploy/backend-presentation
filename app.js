@@ -1,16 +1,10 @@
 const http = require('http');
-const readline = require('readline');
-
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+const http = require('http');
+const prompt = require('prompt-sync')();
 
 async function promptUser() {
   while (true) {
-    const answer = await new Promise((resolve) => {
-      rl.question('Enter something: ', resolve);
-    });
+    const answer = prompt('Enter something: ');
 
     console.log(`You entered: ${answer}`);
 
